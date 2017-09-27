@@ -125,6 +125,13 @@ CREATE UNIQUE INDEX `endTime` ON `phoenix`.`program-slot` (`endTime` ASC) ;
 -- Table `phoenix`.`weekly-schedule`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `phoenix`.`weekly-schedule` ;
+
+CREATE TABLE `phoenix`.`weekly-schedule` (
+  `week_id` INT NOT NULL AUTO_INCREMENT,
+  `weekStartDate` DATETIME NOT NULL,
+  PRIMARY KEY (`week_id`) 
+  )ENGINE = InnoDB;
+  
 /*CREATE  TABLE IF NOT EXISTS `phoenix`.`weekly-schedule` (
   `startDate` DATETIME NOT NULL ,
   `assignedBy` VARCHAR(45) NULL ,
@@ -136,9 +143,9 @@ DROP TABLE IF EXISTS `phoenix`.`weekly-schedule` ;
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE UNIQUE INDEX `startDate_UNIQUE` ON `phoenix`.`weekly-schedule` (`startDate` ASC) ;
-
 CREATE INDEX `id_assigned_by` ON `phoenix`.`weekly-schedule` (`assignedBy` ASC) ;*/
+
+CREATE UNIQUE INDEX `startDate_UNIQUE` ON `phoenix`.`weekly-schedule` (`startDate` ASC) ;
 
 
 -- -----------------------------------------------------

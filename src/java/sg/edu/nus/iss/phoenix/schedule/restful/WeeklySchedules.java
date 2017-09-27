@@ -6,22 +6,22 @@
 package sg.edu.nus.iss.phoenix.schedule.restful;
 
 import java.util.List;
-import sg.edu.nus.iss.phoenix.schedule.entity.ProgramSlot;
+import sg.edu.nus.iss.phoenix.schedule.entity.WeeklySchedule;
 
 /**
  *
  * @author nivi
  */
-public class ProgramSlots {
+public class WeeklySchedules {
     
-    private List <ProgramSlot> psList;
+    private List <WeeklySchedule> wsList;
 
-    public List<ProgramSlot> getPsList() {
-        return psList;
+    public List<WeeklySchedule> getWsList() {
+        return wsList;
     }
  
-    public void setPsList(List<ProgramSlot> psList) {
-        this.psList = psList;
+    public void setWsList(List<WeeklySchedule> wsList) {
+        this.wsList = wsList;
     }
     
 }

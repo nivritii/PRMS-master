@@ -21,6 +21,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriInfo;
 import sg.edu.nus.iss.phoenix.schedule.entity.ProgramSlot;
+import sg.edu.nus.iss.phoenix.schedule.entity.WeeklySchedule;
 import sg.edu.nus.iss.phoenix.schedule.service.ScheduleService;
 
 /**
@@ -59,6 +60,40 @@ public class ScheduleRESTService {
             System.out.println(pslist.get(i).getProgramName());      
         }
         return pssList;
+    }
+    
+    @GET
+    @Path("/weeklyslots/{date}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public ProgramSlots getWeeklySlots(@PathParam("date") String date) throws UnsupportedEncodingException{
+        String date2;
+      
+        date2 = URLDecoder.decode(date,"UTF-8");
+        ArrayList<ProgramSlot> weeklySlots = scheduleService.findWeeklySlots(date2);
+        ProgramSlots weeklyList = new ProgramSlots();
+        weeklyList.setPsList(weeklySlots);
+        
+        for (ProgramSlot slot:weeklySlots){
+           System.out.println(slot.getProgramName());
+        }
+         
+        return weeklyList;
+    }
+    
+    @GET
+    @Path("/weeklyslots")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public WeeklySchedules getAllWeeklySchedules(){
+    
+        ArrayList<WeeklySchedule> weeklySchedules = scheduleService.findAllWS();
+        WeeklySchedules weeklySchList = new WeeklySchedules();
+        weeklySchList.setWsList(weeklySchedules);
+        
+        for (WeeklySchedule ws:weeklySchedules){
+           System.out.println(ws.getStartDate());
+        }
+        
+        return weeklySchList;
     }
 
     @PUT

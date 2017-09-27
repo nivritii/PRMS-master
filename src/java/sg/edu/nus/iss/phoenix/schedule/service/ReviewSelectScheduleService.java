@@ -12,7 +12,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import sg.edu.nus.iss.phoenix.core.dao.DAOFactoryImpl;
 import sg.edu.nus.iss.phoenix.schedule.dao.ScheduleDao;
-import sg.edu.nus.iss.phoenix.schedule.entity.WeeklySchedule;
 
 
 public class ReviewSelectScheduleService {
@@ -30,21 +29,5 @@ public class ReviewSelectScheduleService {
         factory = new DAOFactoryImpl();
         scheduledao = factory.getScheduleDAO();
     }
-
-    /**
-     * Review Select Schedule Method. This method will give a map of year and its respective 
-     * list of weekly schedules. 
-     * @return
-     *      HashMap(Integer, List(WeeklySchedule))
-     */
-   /* public HashMap<Integer, List<WeeklySchedule>> reviewSelectSchedule() {
-        HashMap<Integer, List<WeeklySchedule>> data = null;
-        try {
-            data = scheduledao.loadAll();
-        } catch (SQLException ex) {
-            Logger.getLogger(ReviewSelectScheduleService.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return data;
-    }*/
 
 }

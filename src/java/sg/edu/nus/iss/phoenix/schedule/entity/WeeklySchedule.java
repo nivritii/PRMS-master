@@ -5,15 +5,15 @@
  */
 package sg.edu.nus.iss.phoenix.schedule.entity;
 
-import java.util.Date;
-
-
+/**
+ *
+ * @author nivi
+ */
 public class WeeklySchedule {
-
+    
     private String startDate;
-    private String assignedBy;
-
-    /**
+    
+     /**
      * Constructors. The first one takes no arguments and provides the most
      * simple way to create object instance. The another one takes one argument,
      * which is the primary key of the corresponding table.
@@ -24,8 +24,8 @@ public class WeeklySchedule {
     public WeeklySchedule(String startDate) {
         this.startDate = startDate;
     }
-
-    /**
+    
+     /**
      * Get- and Set-methods for persistent variables. The default behaviour does
      * not make any checks against malformed data, so these might require some
      * manual additions.
@@ -39,16 +39,8 @@ public class WeeklySchedule {
     public void setStartDate(String startDate) {
         this.startDate = startDate;
     }
-
-    public String getAssignedBy() {
-        return assignedBy;
-    }
-
-    public void setAssignedBy(String assignedBy) {
-        this.assignedBy = assignedBy;
-    }
-
-    /**
+    
+     /**
      * Checks if Weekly Schedule already exists. This method checks if the
      * weekly schedule with a given start time is already present.
      *
@@ -62,5 +54,5 @@ public class WeeklySchedule {
             return false;
         }
     }
-
+    
 }
