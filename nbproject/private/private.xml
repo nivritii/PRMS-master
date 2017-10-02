@@ -3,11 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/HP/Documents/NetBeansProjects/PRMS/src/java/sg/edu/nus/iss/phoenix/authenticate/dao/impl/RoleDaoImpl.java</file>
-            <file>file:/C:/Users/HP/Documents/NetBeansProjects/PRMS/src/java/sg/edu/nus/iss/phoenix/authenticate/RESTful/ApplicationConfig.java</file>
-            <file>file:/C:/Users/HP/Documents/NetBeansProjects/PRMS/web/WEB-INF/web.xml</file>
-            <file>file:/C:/Users/HP/Documents/NetBeansProjects/PRMS/src/java/sg/edu/nus/iss/phoenix/core/controller/PhoenixFrontController.java</file>
-            <file>file:/C:/Users/HP/Documents/NetBeansProjects/PRMS/src/java/sg/edu/nus/iss/phoenix/authenticate/entity/Role.java</file>
+            <file>file:/C:/Users/HP/Documents/NetBeansProjects/PRMS/src/java/sg/edu/nus/iss/phoenix/radioprogram/restful/RadioPrograms.java</file>
+            <file>file:/C:/Users/HP/Documents/NetBeansProjects/PRMS/src/java/sg/edu/nus/iss/phoenix/authenticate/RESTful/AuthenticateRESTService.java</file>
+            <file>file:/C:/Users/HP/Documents/NetBeansProjects/PRMS/src/java/sg/edu/nus/iss/phoenix/authenticate/dao/impl/UserDaoImpl.java</file>
+            <file>file:/C:/Users/HP/Documents/NetBeansProjects/PRMS/src/java/sg/edu/nus/iss/phoenix/radioprogram/restful/ProgramRESTService.java</file>
         </group>
     </open-files>
 </project-private>

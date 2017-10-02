@@ -102,20 +102,20 @@ public class AuthenticateRESTService {
     @GET
     @Path("/user/item")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<User> users(@QueryParam("username") String uname) throws SQLException, NotFoundException{
+    public List<User> users() throws SQLException, NotFoundException{
         DAOFactoryImpl factory = new DAOFactoryImpl();
 	UserDao udao = factory.getUserDAO();
         RoleDao rdao = factory.getRoleDAO();
-        User user = udao.getObject(uname);
-        System.out.println(user.getRoles());
-        
-        for(Role rol:user.getRoles()){
-            System.out.println(rol);
-            if(rol.getRole().equals("admin"))
-                return udao.loadAll();  
-        }
-        System.out.println("user limited priviledge");
-            return null;
+        //User user = udao.getObject(uname);
+        //System.out.println(user.getRoles());
+        return udao.loadAll();  
+//        for(Role rol:user.getRoles()){
+//            System.out.println(rol);
+//            if(rol.getRole().equals("admin"))
+//                return udao.loadAll();  
+//        }
+//        System.out.println("user limited priviledge");
+//            return null;
     }
     
     @POST
