@@ -61,6 +61,8 @@ public interface UserDao {
      * @throws java.sql.SQLException
 	 */
 	public abstract List<User> loadAll() throws SQLException;
+        
+        public abstract List<User> loadbyRole(String role) throws SQLException;
 
 	/**
 	 * create-method. This will create new row in database according to supplied

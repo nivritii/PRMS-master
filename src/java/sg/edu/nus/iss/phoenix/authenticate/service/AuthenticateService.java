@@ -92,17 +92,14 @@ public class AuthenticateService {
 		}
 		return user;
 	}
-        public List<User> manageUser()
-        {
-            List<User> data =null;
-            try
-            {
-                data=udao.loadAll();
-                
-            }catch(SQLException ex){
-                Logger.getLogger(AuthenticateService.class.getName()).log(Level.SEVERE,null,ex);
-                                    }
-            return data;                    
-            
+        
+        public List<User> reviewUser(){
+            List<User> data = null;
+            try {
+                data = udao.loadAll();
+            } catch (SQLException ex) {
+                Logger.getLogger(AuthenticateService.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            return data;  
         }
 }

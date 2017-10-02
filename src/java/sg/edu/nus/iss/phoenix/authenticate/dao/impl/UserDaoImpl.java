@@ -99,10 +99,20 @@ public class UserDaoImpl implements UserDao {
 		String sql = "SELECT * FROM user ORDER BY id ASC ";
 		List<User> searchResults = listQuery(this.connection
 				.prepareStatement(sql));
-
-		return searchResults;
-	}
-
+                System.out.println("record size"+searchResults.size());		
+			return searchResults;		
+		}		
+	        		
+	        		
+	        public List<User> loadbyRole(String role) throws SQLException {		
+			
+			String sql = "SELECT * FROM user WHERE role LIKE '%"+ role + "%'ORDER BY id ASC ";		
+			List<User> searchResults = listQuery(this.connection		
+					.prepareStatement(sql));		
+	                //closeConnection();		
+	                System.out.println("record size"+searchResults.size());		
+			return searchResults;				
+		}
 	/*
 	 * (non-Javadoc)
 	 * 

@@ -107,7 +107,12 @@ public class Role implements Cloneable, Serializable {
 	 */
 	public String toString() {
 		
-		return this.role;
+		StringBuffer out = new StringBuffer("toString: ");
+		out.append("\nclass Role, mapping to table role\n");
+		out.append("Persistent attributes: \n");
+		out.append("role = " + this.role + "\n");
+		out.append("accessPrivilege = " + this.accessPrivilege + "\n");
+		return out.toString();
                 
 	}
 

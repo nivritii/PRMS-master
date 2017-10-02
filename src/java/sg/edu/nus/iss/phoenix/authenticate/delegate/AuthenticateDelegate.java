@@ -1,5 +1,6 @@
 package sg.edu.nus.iss.phoenix.authenticate.delegate;
 
+import java.util.List;
 import sg.edu.nus.iss.phoenix.authenticate.entity.User;
 import sg.edu.nus.iss.phoenix.authenticate.service.AuthenticateService;
 
@@ -17,6 +18,10 @@ public class AuthenticateDelegate {
 
 	public User evaluateAccessPreviledge(User user) {
 		return service.evaluateAccessPreviledge(user);
+	}
+        
+                public List<User> reviewUser() {
+		return service.reviewUser();	
 	}
 	
 }
