@@ -33,10 +33,10 @@ public class FCUtilities {
             c.set(Calendar.MINUTE, 0);
             c.set(Calendar.SECOND, 0);
             
-            System.out.println("print the formatted date after getting first day of the week " +formatter.format(c.getTime()));
+            System.out.println("print the formatted date after getting first day of the week " +formatter.format(c.getTime())+".0");
         } catch (ParseException ex) {
             Logger.getLogger(FCUtilities.class.getName()).log(Level.SEVERE, null, ex);
         }
-         return formatter.format(c.getTime());
+         return formatter.format(c.getTime())+".0";
     }
 }

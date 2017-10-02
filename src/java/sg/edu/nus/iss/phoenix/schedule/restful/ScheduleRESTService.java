@@ -32,7 +32,7 @@ import sg.edu.nus.iss.phoenix.schedule.service.ScheduleService;
 @RequestScoped
 public class ScheduleRESTService {
     
-     @Context
+    @Context
     private UriInfo context;
     
     private ScheduleService scheduleService;
@@ -112,18 +112,14 @@ public class ScheduleRESTService {
     
     @DELETE
     @Path("/delete/{duration}/{dateOfProgram}")
-    @Consumes(MediaType.APPLICATION_JSON)
-    public void deleteProgramSlot(@PathParam("duration") String duration, @PathParam("dateOfProgram") String dateOfProgram) {
-        String duration2;
-        String dateOfProgram2;
-        try { 
-            duration2 = URLDecoder.decode(duration, "UTF-8");
-            dateOfProgram2 = URLDecoder.decode(dateOfProgram, "UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace(); 
-            return;
-        }
-
-        scheduleService.processDelete(duration2,dateOfProgram2);
+    public void deleteProgramSlot(@PathParam ("duration") String duration, @PathParam ("dateOfProgram") String dateOfProgram) throws UnsupportedEncodingException{
+        String duration1;
+        String dateOfProgram1;
+        
+        duration1 = URLDecoder.decode(duration, "UTF-8");
+        dateOfProgram1 = URLDecoder.decode(dateOfProgram, "UTF-8");
+                
+        ProgramSlot ps = new ProgramSlot(duration, dateOfProgram);
+        scheduleService.processDelete(ps);
     }
 }

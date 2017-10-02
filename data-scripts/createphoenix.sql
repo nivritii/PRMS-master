@@ -95,7 +95,6 @@ insert into `phoenix`.`radio-program` values("charity", "president charity show 
 DROP TABLE IF EXISTS `phoenix`.`program-slot` ;
 
 CREATE  TABLE IF NOT EXISTS `phoenix`.`program-slot` (
-  `slotId` int(11) NOT NULL AUTO_INCREMENT,
   `duration` TIME NOT NULL ,
   `dateOfProgram` DATETIME NOT NULL ,
   `startTime` DATETIME NOT NULL ,
@@ -103,7 +102,7 @@ CREATE  TABLE IF NOT EXISTS `phoenix`.`program-slot` (
   `program-name` VARCHAR(45) NOT NULL ,
   `presenter` VARCHAR(45) NOT NULL,
   `producer` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`slotId`) ,
+  PRIMARY KEY (`duration`, `dateOfProgram`),
   CONSTRAINT `name`
     FOREIGN KEY (`program-name` )
     REFERENCES `phoenix`.`radio-program` (`name` ),
@@ -131,6 +130,7 @@ CREATE TABLE `phoenix`.`weekly-schedule` (
   `weekStartDate` DATETIME NOT NULL,
   PRIMARY KEY (`week_id`) 
   )ENGINE = InnoDB;
+  CREATE UNIQUE INDEX `startDate_UNIQUE` ON `phoenix`.`weekly-schedule` (`weekStartDate` ASC) ;
   
 /*CREATE  TABLE IF NOT EXISTS `phoenix`.`weekly-schedule` (
   `startDate` DATETIME NOT NULL ,
@@ -144,9 +144,6 @@ CREATE TABLE `phoenix`.`weekly-schedule` (
 ENGINE = InnoDB;
 
 CREATE INDEX `id_assigned_by` ON `phoenix`.`weekly-schedule` (`assignedBy` ASC) ;*/
-
-CREATE UNIQUE INDEX `startDate_UNIQUE` ON `phoenix`.`weekly-schedule` (`startDate` ASC) ;
-
 
 -- -----------------------------------------------------
 -- Table `phoenix`.`annual-schedule`

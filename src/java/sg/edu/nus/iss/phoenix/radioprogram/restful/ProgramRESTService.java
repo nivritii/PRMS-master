@@ -77,21 +77,7 @@ public class ProgramRESTService {
 
         return rpsList;
     }
-    
-    @GET
-    @Path("/psall")
-    @Produces(MediaType.APPLICATION_JSON)
-    public ProgramSlots getAllProgramSlots() {
-        ArrayList<ProgramSlot> pslist = scheduleService.findAllPS();
-        ProgramSlots pssList = new ProgramSlots();
-        pssList.setPsList(pslist);  
-        
-        for (int i = 0; i < pslist.size(); i++) {
-            System.out.println(pslist.get(i).getProgramName());      
-        }
-        return pssList;
-    }
-    
+       
     /**
      * PUT method for updating or creating an instance of resource
      * @param content representation for the resource
@@ -103,12 +89,6 @@ public class ProgramRESTService {
         service.processModify(rp);
     }
     
-    @POST
-    @Path("/updateps")
-    @Consumes(MediaType.APPLICATION_JSON)
-    public void updateProgramSlot(ProgramSlot ps) {
-        scheduleService.processModify(ps);
-    }
     
     /**
      * POST method for creating an instance of resource
@@ -121,12 +101,6 @@ public class ProgramRESTService {
         service.processCreate(rp);
     }
     
-    @PUT
-    @Path("/createps")
-    @Consumes(MediaType.APPLICATION_JSON)
-    public void createProgramSlot(ProgramSlot ps) {
-        scheduleService.processCreate(ps);
-    }
    
     /**
      * DELETE method for deleting an instance of resource

@@ -159,8 +159,13 @@ public class ScheduleDaoImpl implements ScheduleDao {
         try {
             stmt = connection.prepareStatement(query);
             List<WeeklySchedule> list_week = listWeeklySchedule(stmt);
+            
+            System.out.println("start date: " +startDate);
+            
             for (WeeklySchedule weekObj : list_week) {
                 boolean checkIfExists = weekObj.checkIfExists(startDate);
+                
+                System.out.println("weekObj startDate: " +weekObj.getStartDate());
                 System.out.println("in check loop" +checkIfExists);
                 if (checkIfExists == true) {
                     System.out.println("checkExists() is TRUE" );
@@ -220,7 +225,8 @@ public class ScheduleDaoImpl implements ScheduleDao {
     
     @Override
     public void delete(ProgramSlot valueObject) throws NotFoundException, SQLException {
-            
+        
+        openConnection();
         PreparedStatement stmt = null;
         String duration = valueObject.getDuration();
         String dateofProgram = valueObject.getDateOfProgram();
