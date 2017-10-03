@@ -58,11 +58,22 @@ public class AuthenticateRESTService {
     // Produces JSON as response
     @Produces(MediaType.APPLICATION_JSON) 
     public AuthInfo doLogin(@QueryParam("username") String uname, 
-            @QueryParam("password") String pwd){
+            @QueryParam("password") String pwd) throws NotFoundException, SQLException{
         AuthInfo response = new AuthInfo();
         response.setUsername(uname);
         if(checkCredentials(uname, pwd)){
                 response.setAuthStatus(true);
+                DAOFactoryImpl factory = new DAOFactoryImpl();
+                UserDao udao = factory.getUserDAO();
+                User user = udao.getObject(uname);
+                String str = new String();
+                ArrayList<Role> rl = user.getRoles();
+                for(int i =0;i<rl.size();i++){
+                    if(i!=0&&i!=rl.size())str += ":";
+                    Role role = rl.get(i);
+                    str += role.getRole(); 
+                }
+                response.setRole(str);
         }else{
                 response.setAuthStatus(false);	
         }
