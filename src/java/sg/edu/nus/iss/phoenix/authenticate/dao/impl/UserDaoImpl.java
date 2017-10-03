@@ -104,15 +104,15 @@ public class UserDaoImpl implements UserDao {
 		}		
 	        		
 	        		
-	        public List<User> loadbyRole(String role) throws SQLException {		
-			
-			String sql = "SELECT * FROM user WHERE role LIKE '%"+ role + "%'ORDER BY id ASC ";		
-			List<User> searchResults = listQuery(this.connection		
-					.prepareStatement(sql));		
-	                //closeConnection();		
-	                System.out.println("record size"+searchResults.size());		
-			return searchResults;				
-		}
+        public List<User> loadbyRole(String role) throws SQLException {		
+
+                String sql = "SELECT * FROM user WHERE role LIKE '%"+ role + "%'ORDER BY id ASC ";		
+                List<User> searchResults = listQuery(this.connection		
+                                .prepareStatement(sql));		
+                //closeConnection();		
+                System.out.println("record size"+searchResults.size());		
+                return searchResults;				
+        }
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -382,7 +382,7 @@ public class UserDaoImpl implements UserDao {
 			throws NotFoundException, SQLException {
 
 		try (ResultSet result = stmt.executeQuery()) {
-
+                        System.out.printf(DELIMITER, stmt);
 			if (result.next()) {
 
 				valueObject.setId(result.getString("id"));
