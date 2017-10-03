@@ -58,14 +58,26 @@ public class AuthenticateRESTService {
     // Produces JSON as response
     @Produces(MediaType.APPLICATION_JSON) 
     public AuthInfo doLogin(@QueryParam("username") String uname, 
-            @QueryParam("password") String pwd){
+            @QueryParam("password") String pwd) throws NotFoundException, SQLException{
         AuthInfo response = new AuthInfo();
         response.setUsername(uname);
         if(checkCredentials(uname, pwd)){
                 response.setAuthStatus(true);
+                DAOFactoryImpl factory = new DAOFactoryImpl();
+                UserDao udao = factory.getUserDAO();
+                User user = udao.getObject(uname);
+                String str = new String();
+                ArrayList<Role> rl = user.getRoles();
+                for(int i =0;i<rl.size();i++){
+                    if(i!=0&&i!=rl.size())str += ":";
+                    Role role = rl.get(i);
+                    str += role.getRole(); 
+                }
+                response.setRole(str);
         }else{
                 response.setAuthStatus(false);	
         }
+        
         return response;		
     }
 	
@@ -117,6 +129,33 @@ public class AuthenticateRESTService {
 //        System.out.println("user limited priviledge");
 //            return null;
     }
+    
+    @GET
+    @Path("/user/single")
+    @Produces(MediaType.APPLICATION_JSON)
+    public ArrayList<User> single(@QueryParam("id") String id) throws SQLException, NotFoundException{
+        DAOFactoryImpl factory = new DAOFactoryImpl();
+	UserDao udao = factory.getUserDAO();
+        RoleDao rdao = factory.getRoleDAO();
+        List<User> pre = udao.loadAll();
+        ArrayList<User> ul = new ArrayList<User>();
+        for (User user:pre){
+            if (user.getId().equals(id)){
+                System.out.printf(user.toString());
+                ul.add(user);
+                System.out.printf(ul.toString());
+            }
+        }
+        return ul;
+//        for(Role rol:user.getRoles()){
+//            System.out.println(rol);
+//            if(rol.getRole().equals("admin"))
+//                return udao.loadAll();  
+//        }
+//        System.out.println("user limited priviledge");
+//            return null;
+    }
+    
     
     @POST
     @Path("/user/item")
